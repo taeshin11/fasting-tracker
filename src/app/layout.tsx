@@ -4,7 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FeedbackModal from "@/components/FeedbackModal";
-import { BannerTopAd, MobileFooterAd } from "@/components/AdPlaceholders";
+import { BannerTopAd, MobileFooterAd, SocialBarAd } from "@/components/AdPlaceholders";
 import { DarkModeScript } from "@/components/DarkModeScript";
 
 const geistSans = Geist({
@@ -101,6 +101,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <FeedbackModal />
+        <SocialBarAd />
         <MobileFooterAd />
       </body>
     </html>
