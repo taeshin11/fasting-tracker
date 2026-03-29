@@ -28,11 +28,14 @@ export default function Timer({ onSessionChange, onTick }: TimerProps) {
     setCustomWindow(state.customWindow);
     if (state.currentSession?.isActive && state.currentSession.startTime) {
       const start = new Date(state.currentSession.startTime);
+      const resumedElapsed = Math.floor((Date.now() - start.getTime()) / 1000);
+      const resumedGoal = state.protocol === 'custom' ? state.customWindow.fast : (PROTOCOLS[state.protocol]?.fast || 16);
       setStartTime(start);
       setIsActive(true);
-      setElapsed(Math.floor((Date.now() - start.getTime()) / 1000));
+      setElapsed(resumedElapsed);
+      onTick?.(resumedElapsed, resumedGoal);
     }
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (!isActive) return;

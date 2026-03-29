@@ -17,7 +17,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://fasting-tracker-dusky.vercel.app";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
   title: {
     default: "Free Intermittent Fasting Tracker — 16:8, 18:6, OMAD Timer Online",
     template: "%s | Fasting Tracker",
@@ -44,13 +47,23 @@ export const metadata: Metadata = {
       "Track your intermittent fasting with a beautiful visual timer. See metabolic phases, build streaks, and reach your health goals — 100% free, no signup.",
     type: "website",
     locale: "en_US",
+    url: BASE_URL,
     siteName: "Fasting Tracker",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Fasting Tracker — Free Intermittent Fasting Timer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Free Intermittent Fasting Tracker",
     description:
       "Visual fasting timer with metabolic phase tracking. 16:8, 18:6, OMAD and more — free, no signup required.",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
