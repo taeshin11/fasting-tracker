@@ -7,7 +7,8 @@ import HydrationTracker from '@/components/HydrationTracker';
 import HistoryLog from '@/components/HistoryLog';
 import Tips from '@/components/Tips';
 import { SidebarAd, AdPlaceholder } from '@/components/AdPlaceholders';
-import { getAppState, PROTOCOLS } from '@/lib/storage';
+import ShareButtons from '@/components/ShareButtons';
+import { PROTOCOLS } from '@/lib/storage';
 import { JsonLd } from '@/components/JsonLd';
 
 export default function Home() {
@@ -83,6 +84,11 @@ export default function Home() {
             <section aria-label="Fasting history" className="mb-10 bg-white dark:bg-gray-900 rounded-2xl p-4 sm:p-6 shadow-sm border border-gray-100 dark:border-gray-800">
               <h2 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">Fasting History</h2>
               <HistoryLog key={refreshKey} />
+            </section>
+
+            {/* Share */}
+            <section className="mb-10">
+              <ShareButtons />
             </section>
           </div>
 

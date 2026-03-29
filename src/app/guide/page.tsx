@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { JsonLd } from '@/components/JsonLd';
+import ShareButtons from '@/components/ShareButtons';
 
 export const metadata: Metadata = {
   title: 'Complete Guide to Intermittent Fasting — Protocols, Benefits & Tips',
@@ -224,7 +225,9 @@ export default function GuidePage() {
             </Link>
           </div>
 
-          <div className="mt-8 flex gap-4 text-sm">
+          <ShareButtons className="mt-8 mb-4" />
+
+          <div className="flex gap-4 text-sm">
             <Link href="/faq" className="text-green-600 dark:text-green-400 hover:underline">Fasting FAQ →</Link>
             <Link href="/about" className="text-green-600 dark:text-green-400 hover:underline">About This Tool →</Link>
           </div>
