@@ -95,6 +95,7 @@ export default function RootLayout({
       <head>
         <DarkModeScript />
         <link rel="manifest" href="/manifest.json" />
+        <meta name="google-site-verification" content="ppGiOr8iUeptLM9o1aMjOvKyWKn1SfW3jn56FP7NoIc" />
         <meta name="theme-color" content="#5a8a5e" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
