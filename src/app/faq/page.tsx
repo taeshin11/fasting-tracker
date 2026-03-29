@@ -3,10 +3,16 @@ import Link from 'next/link';
 import { JsonLd } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'Intermittent Fasting FAQ — Common Questions Answered',
+  title: 'How to Use Fasting Tracker & FAQ — Intermittent Fasting Questions Answered',
   description:
-    'Answers to the most common questions about intermittent fasting: what to drink, how to start, exercise tips, weight loss expectations, and more.',
+    'Learn how to use Fasting Tracker in 3 easy steps, plus answers to 12+ common intermittent fasting questions about protocols, weight loss, and more.',
+  keywords: ['fasting FAQ', 'how to use fasting tracker', 'intermittent fasting questions', '16:8 fasting FAQ', 'fasting tips'],
   alternates: { canonical: '/faq' },
+  openGraph: {
+    title: 'How to Use Fasting Tracker & Intermittent Fasting FAQ',
+    description: 'Step-by-step guide to using Fasting Tracker plus expert answers to common intermittent fasting questions.',
+    url: '/faq',
+  },
 };
 
 const faqs = [
@@ -84,12 +90,41 @@ export default function FAQPage() {
         </nav>
 
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-white mb-2">
-          Intermittent Fasting FAQ
+          How to Use Fasting Tracker &amp; FAQ
         </h1>
         <p className="text-gray-500 dark:text-gray-400 mb-10">
-          Answers to the most commonly asked questions about intermittent fasting.
+          Get started in 3 simple steps, then find answers to common intermittent fasting questions below.
         </p>
 
+        {/* How to Use Section */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">How to Use Fasting Tracker</h2>
+          <div className="grid sm:grid-cols-3 gap-4 mb-6">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-5 border border-gray-100 dark:border-gray-700 text-center">
+              <div className="text-3xl mb-3">1️⃣</div>
+              <h3 className="font-semibold text-gray-800 dark:text-white mb-2">Choose Your Protocol</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300">Select from 16:8, 18:6, 20:4, 5:2, OMAD, or set a custom fasting window. Each protocol shows a brief description so you can pick the best fit for your lifestyle.</p>
+            </div>
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-5 border border-gray-100 dark:border-gray-700 text-center">
+              <div className="text-3xl mb-3">2️⃣</div>
+              <h3 className="font-semibold text-gray-800 dark:text-white mb-2">Start Your Fast</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300">Hit the "Start Fast" button and watch the circular timer track your progress. The metabolic phase bar below shows your body's current state — from digestion to fat burning to autophagy.</p>
+            </div>
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-5 border border-gray-100 dark:border-gray-700 text-center">
+              <div className="text-3xl mb-3">3️⃣</div>
+              <h3 className="font-semibold text-gray-800 dark:text-white mb-2">Track &amp; Improve</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300">Log your water intake, add notes about how you feel, and complete your fast. Review your history, build streaks, earn achievement badges, and export your data anytime.</p>
+            </div>
+          </div>
+          <div className="bg-green-50 dark:bg-green-900/20 rounded-xl p-4 border border-green-100 dark:border-green-800">
+            <p className="text-sm text-green-700 dark:text-green-400">
+              <strong>Pro tip:</strong> Your timer persists even if you close the browser. When you return, it calculates the elapsed time from your stored start timestamp — so you never lose progress.
+            </p>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">Frequently Asked Questions</h2>
         <div className="space-y-6">
           {faqs.map((faq, i) => (
             <details key={i} className="group bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 overflow-hidden">
