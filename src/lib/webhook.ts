@@ -1,8 +1,6 @@
-// Replace with your Google Apps Script web app URL after setup
-const WEBHOOK_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxqK-fVdNxNIDHp6LRuQgbDU3MF98I7PZ0sdZnKFhFUxknvKPiWmoEIwCoKbJRS3UI0ew/exec';
 
 async function post(data: Record<string, unknown>): Promise<void> {
-  if (WEBHOOK_URL.includes('YOUR_SCRIPT_ID')) return;
   try {
     await fetch(WEBHOOK_URL, {
       method: 'POST',
@@ -54,7 +52,6 @@ export async function trackVisitor(): Promise<{ today: number; total: number } |
       document.referrer,
     ],
   });
-  if (WEBHOOK_URL.includes('YOUR_SCRIPT_ID')) return null;
   try {
     const res = await fetch(WEBHOOK_URL + '?type=visitor');
     return await res.json();
