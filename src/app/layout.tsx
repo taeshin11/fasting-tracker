@@ -94,6 +94,11 @@ export default function RootLayout({
     >
       <head>
         <DarkModeScript />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#5a8a5e" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Fasting Tracker" />
       </head>
       <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)]">
         <Header />
