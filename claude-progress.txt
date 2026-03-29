@@ -1,7 +1,9 @@
 # Fasting Tracker — Progress Log
 
-## Current State: M8 — Final Build & Deploy
-All features implemented. Running build and deploying to Vercel.
+## Current State: M8 — COMPLETE ✅
+All features implemented. Deployed to Vercel.
+Live URL: https://fasting-tracker-dusky.vercel.app
+GitHub: https://github.com/taeshin11/fasting-tracker
 
 ## Completed Milestones
 
@@ -62,7 +64,16 @@ All features implemented. Running build and deploying to Vercel.
 - Adsterra scripts need to be pasted after account approval
 - OG image needs to be created and placed at /public/og-image.png
 
-## Next Steps
-- Build and fix any compilation errors
-- Deploy to Vercel
-- Verify live site functionality
+### M8 — Deploy & Review ✅
+- Successful build (all 11 routes, 0 errors)
+- GitHub repo created via `gh` CLI
+- Deployed to Vercel (auto-deploys on push via GitHub integration)
+- Generated OG image via Next.js ImageResponse
+- metadataBase set for proper absolute URLs
+- Live site verified: all pages load, content renders correctly
+
+## Remaining Manual Steps
+- Set up Google Apps Script webhook (paste code from PRD section 7 into Apps Script, deploy, update WEBHOOK_URL in src/lib/webhook.ts)
+- Sign up for Adsterra, get approved, paste ad scripts into placeholder components
+- Submit sitemap to Google Search Console
+- Create custom OG image if desired (current is auto-generated)
