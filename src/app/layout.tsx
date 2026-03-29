@@ -101,6 +101,12 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Fasting Tracker" />
       </head>
       <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)]">
+        <noscript>
+          <div style={{padding:'2rem',textAlign:'center',fontFamily:'system-ui'}}>
+            <h1>Fasting Tracker</h1>
+            <p>Please enable JavaScript to use the Fasting Tracker. This app runs entirely in your browser.</p>
+          </div>
+        </noscript>
         <Header />
         <BannerTopAd />
         <main className="flex-1">{children}</main>

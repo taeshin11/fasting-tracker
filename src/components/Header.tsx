@@ -23,7 +23,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm border-b border-gray-200/50 dark:border-gray-800/50">
+    <header className="sticky top-0 z-50 bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm border-b border-gray-200/50 dark:border-gray-800/50" role="banner">
       <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 font-bold text-gray-800 dark:text-white">
           <span className="text-xl">⏱️</span>
@@ -32,7 +32,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-6 text-sm text-gray-600 dark:text-gray-400">
+        <nav className="hidden md:flex items-center gap-6 text-sm text-gray-600 dark:text-gray-400" aria-label="Main navigation">
           <Link href="/" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">Timer</Link>
           <Link href="/guide" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">Guide</Link>
           <Link href="/faq" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">FAQ</Link>
