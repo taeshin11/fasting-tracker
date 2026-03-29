@@ -1,0 +1,68 @@
+# Fasting Tracker — Progress Log
+
+## Current State: M8 — Final Build & Deploy
+All features implemented. Running build and deploying to Vercel.
+
+## Completed Milestones
+
+### M1 — Project Setup & Layout ✅
+- Next.js 16 + Tailwind 4 + TypeScript scaffold
+- Header with dark mode toggle, mobile hamburger menu
+- Footer with SPINAI branding, visitor counter, trust badge
+- Responsive layout, warm gradient background theme
+- Dark mode with localStorage persistence + flash prevention
+
+### M2 — Timer & Protocol Selector ✅
+- 6 fasting protocols: 16:8, 18:6, 20:4, 5:2, OMAD, Custom
+- Circular SVG timer with progress arc
+- Elapsed/remaining/percentage display
+- Start, Complete, Reset controls
+- Timer persists across page refresh via localStorage
+- Webhook tracking on start/complete events
+
+### M3 — Metabolic Phase Progress Bar ✅
+- 5 phases: Fed State, Early Fasting, Fat Burning, Ketosis, Deep Ketosis/Autophagy
+- Phase cards with emoji, description, time range
+- Current phase highlighted with Active badge
+- Expandable detail cards
+- Overall gradient progress bar
+
+### M4 — History, Streaks, Hydration ✅
+- Session history list with completed/partial badges
+- Stats: this week, this month, avg duration, current streak
+- Streak badges: 3-day, 7-day, 14-day, 30-day
+- Water intake counter with visual indicators
+- Session notes textarea
+- Clear history with confirmation
+
+### M5 — SEO Pages & Schema Markup ✅
+- /guide: 1500+ word comprehensive fasting guide
+- /faq: 12 questions with schema.org FAQPage markup
+- /about: Features list, SPINAI info, contact details
+- /privacy: Full privacy policy
+- /terms: Full terms of service
+- JSON-LD structured data (WebApplication, FAQPage, Article)
+- sitemap.xml and robots.txt auto-generated
+- OG tags, Twitter cards, canonical URLs on all pages
+
+### M6 — Ad Placements & Webhook ✅
+- Adsterra placeholders: banner top, sidebar, native mid, mobile footer
+- Google Sheets webhook module with trackFastStart, trackFastComplete, trackVisitor
+- Apps Script code provided in PRD.md section 7
+
+### M7 — Visitor Counter, Feedback, Export ✅
+- Visitor counter in footer (localStorage-based, webhook-ready)
+- Floating feedback button with modal (mailto integration)
+- Business inquiry email in footer
+- Export as JSON or CSV
+- Import from JSON file
+
+## Known Items
+- Webhook URL placeholder needs real Google Apps Script URL after manual setup
+- Adsterra scripts need to be pasted after account approval
+- OG image needs to be created and placed at /public/og-image.png
+
+## Next Steps
+- Build and fix any compilation errors
+- Deploy to Vercel
+- Verify live site functionality

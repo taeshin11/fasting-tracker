@@ -1,8 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #faf8f5;
+  --foreground: #2d2a26;
+  --card-bg: #ffffff;
+  --card-border: #e8e4de;
+  --accent-green: #5a8a5e;
+  --accent-amber: #c49a3c;
+  --muted: #8a8478;
+}
+
+.dark {
+  --background: #1a1a1f;
+  --foreground: #e8e4de;
+  --card-bg: #242428;
+  --card-border: #3a3a40;
+  --accent-green: #7ab87e;
+  --accent-amber: #dbb55c;
+  --muted: #9a9490;
 }
 
 @theme inline {
@@ -12,15 +27,49 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Smooth gradient background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #faf8f5 0%, #f0ece4 50%, #e8f0e8 100%);
+  z-index: -1;
+}
+
+.dark body::before {
+  background: linear-gradient(135deg, #1a1a1f 0%, #1e1e24 50%, #1a201a 100%);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d0ccc4;
+  border-radius: 3px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #3a3a40;
+}
+
+/* Pulse animation for timer */
+@keyframes pulse-slow {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.015); }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s ease-in-out infinite;
 }

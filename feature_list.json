@@ -1,0 +1,20 @@
+[
+  { "id": "F1", "name": "Fasting Protocol Selector", "status": "done", "milestone": "M2", "criteria": "6 protocols (16:8, 18:6, 20:4, 5:2, OMAD, Custom), descriptions, localStorage persistence" },
+  { "id": "F2", "name": "Fasting Timer", "status": "done", "milestone": "M2", "criteria": "Circular timer, start/stop/reset, elapsed/remaining display, localStorage persistence across refresh" },
+  { "id": "F3", "name": "Metabolic Phase Progress Bar", "status": "done", "milestone": "M3", "criteria": "5 phases with icons, descriptions, animated current phase, expandable detail cards" },
+  { "id": "F4", "name": "Fasting History Log", "status": "done", "milestone": "M4", "criteria": "Session list, stats (week/month/avg/streak), clear history, streak badges" },
+  { "id": "F5", "name": "Hydration & Notes Tracker", "status": "done", "milestone": "M4", "criteria": "Water glass counter, session notes, persisted in localStorage" },
+  { "id": "F6", "name": "Fasting Streak & Achievements", "status": "done", "milestone": "M4", "criteria": "Streak counter, 3/7/14/30-day badges" },
+  { "id": "F7", "name": "Educational Tips Section", "status": "done", "milestone": "M5", "criteria": "Rotating tip cards, link to /guide page" },
+  { "id": "F8", "name": "Export / Import Data", "status": "done", "milestone": "M7", "criteria": "JSON and CSV export, JSON import" },
+  { "id": "SEO1", "name": "SEO Pages (guide, faq, about, privacy, terms)", "status": "done", "milestone": "M5", "criteria": "Long-form content, per-page metadata, internal linking" },
+  { "id": "SEO2", "name": "Schema.org + Sitemap + Robots", "status": "done", "milestone": "M5", "criteria": "WebApplication + FAQPage JSON-LD, sitemap.xml, robots.txt" },
+  { "id": "SEO3", "name": "Meta Tags + OG + Twitter Cards", "status": "done", "milestone": "M5", "criteria": "Title, description, keywords, OG tags, Twitter cards on all pages" },
+  { "id": "AD1", "name": "Adsterra Ad Placeholders", "status": "done", "milestone": "M6", "criteria": "Banner top, sidebar, native mid-content, mobile footer placeholders" },
+  { "id": "WH1", "name": "Google Sheets Webhook", "status": "done", "milestone": "M6", "criteria": "Webhook module, trackFastStart, trackFastComplete, trackVisitor functions" },
+  { "id": "VC1", "name": "Visitor Counter", "status": "done", "milestone": "M7", "criteria": "localStorage-based counter in footer, webhook-ready for real counter" },
+  { "id": "FB1", "name": "Feedback Modal", "status": "done", "milestone": "M7", "criteria": "Floating button, modal with text+email fields, mailto integration" },
+  { "id": "BR1", "name": "SPINAI Branding", "status": "done", "milestone": "M7", "criteria": "Footer signature, about page mention" },
+  { "id": "DM1", "name": "Dark Mode", "status": "done", "milestone": "M1", "criteria": "Toggle in header, localStorage persistence, flash prevention" },
+  { "id": "DEPLOY", "name": "Build & Deploy to Vercel", "status": "in-progress", "milestone": "M8", "criteria": "Successful build, deploy via CLI, verify live site" }
+]
