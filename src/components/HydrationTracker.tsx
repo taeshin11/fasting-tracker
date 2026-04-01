@@ -1,8 +1,10 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { getAppState, saveAppState } from '@/lib/storage';
+import { useTranslation } from '@/lib/i18n/TranslationContext';
 
 export default function HydrationTracker() {
+  const { t } = useTranslation();
   const [glasses, setGlasses] = useState(0);
   const [notes, setNotes] = useState('');
   const [mounted, setMounted] = useState(false);
@@ -30,7 +32,7 @@ export default function HydrationTracker() {
   return (
     <div className="space-y-4">
       <div>
-        <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">💧 Water Intake</h3>
+        <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">💧 {t('hydration.waterIntake')}</h3>
         <div className="flex items-center gap-3">
           <button onClick={() => updateGlasses(glasses - 1)}
             className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors flex items-center justify-center">
@@ -41,21 +43,21 @@ export default function HydrationTracker() {
               <span key={i} className="text-xl">💧</span>
             ))}
             {glasses > 8 && <span className="text-sm text-blue-600 font-semibold">+{glasses - 8}</span>}
-            {glasses === 0 && <span className="text-gray-400 text-sm">No water logged</span>}
+            {glasses === 0 && <span className="text-gray-400 text-sm">{t('hydration.noWaterLogged')}</span>}
           </div>
           <button onClick={() => updateGlasses(glasses + 1)}
             className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xl font-bold hover:bg-blue-200 dark:hover:bg-blue-800/40 transition-colors flex items-center justify-center">
             +
           </button>
-          <span className="text-sm text-gray-500 dark:text-gray-400">{glasses} glass{glasses !== 1 ? 'es' : ''}</span>
+          <span className="text-sm text-gray-500 dark:text-gray-400">{glasses} {glasses !== 1 ? t('hydration.glasses') : t('hydration.glass')}</span>
         </div>
       </div>
       <div>
-        <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">📝 Session Notes</h3>
+        <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">📝 {t('hydration.sessionNotes')}</h3>
         <textarea
           value={notes}
           onChange={e => updateNotes(e.target.value)}
-          placeholder="How are you feeling? Any observations..."
+          placeholder={t('hydration.notesPlaceholder')}
           rows={2}
           className="w-full px-3 py-2 text-sm border border-gray-200 dark:border-gray-700 rounded-xl resize-none bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent"
         />

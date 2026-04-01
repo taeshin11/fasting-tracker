@@ -1,8 +1,10 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { getSessions, saveSessions, getSessionStats, FastingSession } from '@/lib/storage';
+import { useTranslation } from '@/lib/i18n/TranslationContext';
 
 export default function HistoryLog() {
+  const { t } = useTranslation();
   const [sessions, setSessions] = useState<FastingSession[]>([]);
   const [mounted, setMounted] = useState(false);
   const [showClearConfirm, setShowClearConfirm] = useState(false);
@@ -52,7 +54,7 @@ export default function HistoryLog() {
           saveSessions(data);
           setSessions(data);
         }
-      } catch { alert('Invalid file format. Please import a valid JSON file.'); }
+      } catch { alert(t('history.invalidFile')); }
     };
     reader.readAsText(file);
   };
@@ -61,10 +63,10 @@ export default function HistoryLog() {
 
   const stats = getSessionStats(sessions);
   const badges = [
-    { days: 3, emoji: '🥉', label: '3-Day Streak' },
-    { days: 7, emoji: '🥈', label: 'Week Warrior' },
-    { days: 14, emoji: '🥇', label: '2-Week Champion' },
-    { days: 30, emoji: '🏆', label: 'Monthly Master' },
+    { days: 3, emoji: '🥉', label: t('history.badge3Day') },
+    { days: 7, emoji: '🥈', label: t('history.badgeWeek') },
+    { days: 14, emoji: '🥇', label: t('history.badge2Week') },
+    { days: 30, emoji: '🏆', label: t('history.badgeMonth') },
   ];
 
   return (
@@ -72,10 +74,10 @@ export default function HistoryLog() {
       {/* Stats */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {[
-          { label: 'This Week', value: stats.thisWeek, unit: 'fasts' },
-          { label: 'This Month', value: stats.thisMonth, unit: 'fasts' },
-          { label: 'Avg Duration', value: stats.avgDuration, unit: 'min' },
-          { label: 'Current Streak', value: stats.streak, unit: 'days' },
+          { label: t('history.thisWeek'), value: stats.thisWeek, unit: t('common.fasts') },
+          { label: t('history.thisMonth'), value: stats.thisMonth, unit: t('common.fasts') },
+          { label: t('history.avgDuration'), value: stats.avgDuration, unit: t('common.minutes') },
+          { label: t('history.currentStreak'), value: stats.streak, unit: t('common.days') },
         ].map(stat => (
           <div key={stat.label} className="bg-white dark:bg-gray-800 rounded-xl p-3 text-center shadow-sm border border-gray-100 dark:border-gray-700">
             <div className="text-2xl font-bold text-green-600 dark:text-green-400">{stat.value}</div>
@@ -108,23 +110,23 @@ export default function HistoryLog() {
         </select>
         <button onClick={handleExport} disabled={sessions.length === 0}
           className="px-4 py-2 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-40 transition-colors">
-          Export
+          {t('common.export')}
         </button>
         <label className="px-4 py-2 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 cursor-pointer transition-colors">
-          Import
+          {t('common.import')}
           <input type="file" accept=".json" onChange={handleImport} className="hidden" />
         </label>
         {sessions.length > 0 && (
           showClearConfirm ? (
             <div className="flex gap-2 items-center">
-              <span className="text-sm text-red-600">Clear all history?</span>
-              <button onClick={handleClear} className="px-3 py-2 text-sm bg-red-600 text-white rounded-lg hover:bg-red-700">Yes</button>
-              <button onClick={() => setShowClearConfirm(false)} className="px-3 py-2 text-sm bg-gray-200 dark:bg-gray-700 rounded-lg">No</button>
+              <span className="text-sm text-red-600">{t('history.clearConfirm')}</span>
+              <button onClick={handleClear} className="px-3 py-2 text-sm bg-red-600 text-white rounded-lg hover:bg-red-700">{t('common.yes')}</button>
+              <button onClick={() => setShowClearConfirm(false)} className="px-3 py-2 text-sm bg-gray-200 dark:bg-gray-700 rounded-lg">{t('common.no')}</button>
             </div>
           ) : (
             <button onClick={() => setShowClearConfirm(true)}
               className="px-4 py-2 text-sm bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800 rounded-lg hover:bg-red-100 transition-colors">
-              Clear History
+              {t('history.clearHistory')}
             </button>
           )
         )}
@@ -134,7 +136,7 @@ export default function HistoryLog() {
       {sessions.length === 0 ? (
         <div className="text-center py-12 text-gray-400 dark:text-gray-600">
           <div className="text-4xl mb-3">📋</div>
-          <div>No fasting sessions yet. Start your first fast!</div>
+          <div>{t('history.noSessions')}</div>
         </div>
       ) : (
         <div className="space-y-2">
@@ -145,7 +147,7 @@ export default function HistoryLog() {
                 <div className="flex items-center gap-2">
                   <span className="font-medium text-sm text-gray-800 dark:text-gray-200">{session.protocol}</span>
                   <span className={`text-xs px-1.5 py-0.5 rounded-full ${session.completed ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' : 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400'}`}>
-                    {session.completed ? 'Complete' : 'Partial'}
+                    {session.completed ? t('history.complete') : t('history.partial')}
                   </span>
                 </div>
                 <div className="text-xs text-gray-500 dark:text-gray-400">

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { JsonLd } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   title: 'About Fasting Tracker — Free Intermittent Fasting Timer by SPINAI',
@@ -17,6 +18,44 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'AboutPage',
+          name: 'About Fasting Tracker',
+          description:
+            'Learn about Fasting Tracker, a free browser-based intermittent fasting timer with metabolic phase tracking. Built by SPINAI.',
+          url: 'https://fasting-tracker-dusky.vercel.app/about',
+          mainEntity: {
+            '@type': 'Organization',
+            name: 'SPINAI',
+            url: 'https://spinai.dev',
+            email: 'taeshinkim11@gmail.com',
+            description:
+              'SPINAI builds free, useful web tools that respect user privacy and don\'t require unnecessary data collection.',
+          },
+        }}
+      />
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              name: 'Home',
+              item: 'https://fasting-tracker-dusky.vercel.app',
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: 'About',
+              item: 'https://fasting-tracker-dusky.vercel.app/about',
+            },
+          ],
+        }}
+      />
       <nav className="text-sm text-gray-500 dark:text-gray-400 mb-6">
         <Link href="/" className="hover:text-green-600">Home</Link> / <span>About</span>
       </nav>
@@ -123,8 +162,8 @@ export default function AboutPage() {
           <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Contact Us</h2>
           <p className="mb-3">
             <strong>Business Inquiries &amp; Partnerships:</strong>{' '}
-            <a href="mailto:spinaiceo@gmail.com" className="text-green-600 dark:text-green-400 hover:underline">
-              spinaiceo@gmail.com
+            <a href="mailto:taeshinkim11@gmail.com" className="text-green-600 dark:text-green-400 hover:underline">
+              taeshinkim11@gmail.com
             </a>
           </p>
           <p className="mb-3">
@@ -132,8 +171,8 @@ export default function AboutPage() {
           </p>
           <p>
             <strong>Press &amp; Media:</strong> For press inquiries, please email{' '}
-            <a href="mailto:spinaiceo@gmail.com" className="text-green-600 dark:text-green-400 hover:underline">
-              spinaiceo@gmail.com
+            <a href="mailto:taeshinkim11@gmail.com" className="text-green-600 dark:text-green-400 hover:underline">
+              taeshinkim11@gmail.com
             </a>{' '}
             with "Press Inquiry" in the subject line.
           </p>

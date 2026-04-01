@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useCallback } from 'react';
+import { useTranslation } from '@/lib/i18n/TranslationContext';
 import Timer from '@/components/Timer';
 import MetabolicPhases from '@/components/MetabolicPhases';
 import HydrationTracker from '@/components/HydrationTracker';
@@ -12,6 +13,7 @@ import { PROTOCOLS } from '@/lib/storage';
 import { JsonLd } from '@/components/JsonLd';
 
 export default function Home() {
+  const { t } = useTranslation();
   const [refreshKey, setRefreshKey] = useState(0);
   const [timerState, setTimerState] = useState({ elapsed: 0, goalHours: 16 });
 
@@ -50,10 +52,10 @@ export default function Home() {
             {/* Hero Section */}
             <section className="text-center mb-8">
               <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-white mb-2">
-                Intermittent Fasting Tracker
+                {t('hero.title')}
               </h1>
               <p className="text-gray-500 dark:text-gray-400 max-w-lg mx-auto">
-                Select your fasting protocol, start the timer, and track your metabolic progress — all free, all in your browser.
+                {t('hero.subtitle')}
               </p>
             </section>
 
@@ -82,7 +84,7 @@ export default function Home() {
 
             {/* History */}
             <section aria-label="Fasting history" className="mb-10 bg-white dark:bg-gray-900 rounded-2xl p-4 sm:p-6 shadow-sm border border-gray-100 dark:border-gray-800">
-              <h2 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">Fasting History</h2>
+              <h2 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">{t('history.title')}</h2>
               <HistoryLog key={refreshKey} />
             </section>
 

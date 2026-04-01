@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FeedbackModal from "@/components/FeedbackModal";
 import { BannerTopAd, MobileFooterAd, SocialBarAd } from "@/components/AdPlaceholders";
 import { DarkModeScript } from "@/components/DarkModeScript";
+import ClientProviders from "@/components/ClientProviders";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -49,21 +51,12 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: BASE_URL,
     siteName: "Fasting Tracker",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Fasting Tracker — Free Intermittent Fasting Timer",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Free Intermittent Fasting Tracker",
     description:
       "Visual fasting timer with metabolic phase tracking. 16:8, 18:6, OMAD and more — free, no signup required.",
-    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -100,6 +93,13 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Fasting Tracker" />
+        <link rel="alternate" hrefLang="x-default" href="https://fasting-tracker-dusky.vercel.app" />
+        <link rel="alternate" hrefLang="en" href="https://fasting-tracker-dusky.vercel.app" />
+        <Script
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7098271335538021"
+          strategy="afterInteractive"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)]">
         <noscript>
@@ -108,13 +108,15 @@ export default function RootLayout({
             <p>Please enable JavaScript to use the Fasting Tracker. This app runs entirely in your browser.</p>
           </div>
         </noscript>
-        <Header />
-        <BannerTopAd />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <FeedbackModal />
-        <SocialBarAd />
-        <MobileFooterAd />
+        <ClientProviders>
+          <Header />
+          <BannerTopAd />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <FeedbackModal />
+          <SocialBarAd />
+          <MobileFooterAd />
+        </ClientProviders>
       </body>
     </html>
   );

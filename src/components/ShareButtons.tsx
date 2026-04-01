@@ -1,15 +1,20 @@
 'use client';
 
+import { useTranslation } from '@/lib/i18n/TranslationContext';
+
 const SHARE_URL = 'https://fasting-tracker-dusky.vercel.app';
-const SHARE_TITLE = 'Free Intermittent Fasting Tracker — 16:8, 18:6, OMAD Timer';
-const SHARE_TEXT = 'Track your intermittent fasting with this free visual timer. See metabolic phases, build streaks, and reach your health goals!';
 
 export default function ShareButtons({ className = '' }: { className?: string }) {
+  const { t } = useTranslation();
+
+  const shareTitle = t('share.shareTitle');
+  const shareText = t('share.shareText');
+
   const links = [
     {
       name: 'Twitter',
       icon: '𝕏',
-      url: `https://twitter.com/intent/tweet?text=${encodeURIComponent(SHARE_TEXT)}&url=${encodeURIComponent(SHARE_URL)}`,
+      url: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(SHARE_URL)}`,
       bg: 'bg-black hover:bg-gray-800 text-white',
     },
     {
@@ -21,26 +26,26 @@ export default function ShareButtons({ className = '' }: { className?: string })
     {
       name: 'Reddit',
       icon: 'r/',
-      url: `https://www.reddit.com/submit?url=${encodeURIComponent(SHARE_URL)}&title=${encodeURIComponent(SHARE_TITLE)}`,
+      url: `https://www.reddit.com/submit?url=${encodeURIComponent(SHARE_URL)}&title=${encodeURIComponent(shareTitle)}`,
       bg: 'bg-orange-600 hover:bg-orange-700 text-white',
     },
     {
       name: 'WhatsApp',
       icon: '💬',
-      url: `https://wa.me/?text=${encodeURIComponent(SHARE_TEXT + ' ' + SHARE_URL)}`,
+      url: `https://wa.me/?text=${encodeURIComponent(shareText + ' ' + SHARE_URL)}`,
       bg: 'bg-green-500 hover:bg-green-600 text-white',
     },
   ];
 
   const handleNativeShare = async () => {
     if (navigator.share) {
-      await navigator.share({ title: SHARE_TITLE, text: SHARE_TEXT, url: SHARE_URL });
+      await navigator.share({ title: shareTitle, text: shareText, url: SHARE_URL });
     }
   };
 
   return (
     <div className={`flex flex-wrap items-center gap-2 ${className}`}>
-      <span className="text-sm font-medium text-gray-500 dark:text-gray-400 mr-1">Share:</span>
+      <span className="text-sm font-medium text-gray-500 dark:text-gray-400 mr-1">{t('share.label')}</span>
       {links.map((link) => (
         <a
           key={link.name}
@@ -48,7 +53,7 @@ export default function ShareButtons({ className = '' }: { className?: string })
           target="_blank"
           rel="noopener noreferrer"
           className={`inline-flex items-center justify-center w-9 h-9 rounded-full text-sm font-bold transition-all active:scale-95 ${link.bg}`}
-          title={`Share on ${link.name}`}
+          title={t('share.shareOn', { platform: link.name })}
         >
           {link.icon}
         </a>

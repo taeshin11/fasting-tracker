@@ -2,13 +2,27 @@
 import { useState, useEffect, useCallback } from 'react';
 import { getAppState, saveAppState, PROTOCOLS } from '@/lib/storage';
 import { trackFastStart, trackFastComplete } from '@/lib/webhook';
+import { useTranslation } from '@/lib/i18n/TranslationContext';
 
 interface TimerProps {
   onSessionChange?: () => void;
   onTick?: (elapsedSeconds: number, goalHours: number) => void;
 }
 
+const getProtoDescKey = (key: string) => {
+  const map: Record<string, string> = {
+    '16:8': 'protocols.desc_16_8',
+    '18:6': 'protocols.desc_18_6',
+    '20:4': 'protocols.desc_20_4',
+    '5:2': 'protocols.desc_5_2',
+    'OMAD': 'protocols.desc_OMAD',
+    'custom': 'protocols.desc_custom',
+  };
+  return map[key] || 'protocols.desc_16_8';
+};
+
 export default function Timer({ onSessionChange, onTick }: TimerProps) {
+  const { t } = useTranslation();
   const [isActive, setIsActive] = useState(false);
   const [startTime, setStartTime] = useState<Date | null>(null);
   const [elapsed, setElapsed] = useState(0); // seconds
@@ -144,13 +158,13 @@ export default function Timer({ onSessionChange, onTick }: TimerProps) {
 
       {/* Protocol Description */}
       <p className="text-sm text-gray-500 dark:text-gray-400 text-center max-w-sm">
-        {PROTOCOLS[protocol]?.description}
+        {t(getProtoDescKey(protocol))}
       </p>
 
       {/* Custom Window Inputs */}
       {protocol === 'custom' && !isActive && (
         <div className="flex items-center gap-3 text-sm">
-          <label className="text-gray-600 dark:text-gray-400">Fast:</label>
+          <label className="text-gray-600 dark:text-gray-400">{t('timer.fast')}</label>
           <input
             type="number"
             min="1"
@@ -164,7 +178,7 @@ export default function Timer({ onSessionChange, onTick }: TimerProps) {
             className="w-16 px-2 py-1 border rounded-lg text-center dark:bg-gray-800 dark:border-gray-700"
           />
           <span className="text-gray-400">h</span>
-          <label className="text-gray-600 dark:text-gray-400">Eat:</label>
+          <label className="text-gray-600 dark:text-gray-400">{t('timer.eat')}</label>
           <input
             type="number"
             min="1"
@@ -205,16 +219,16 @@ export default function Timer({ onSessionChange, onTick }: TimerProps) {
           {isActive ? (
             <>
               <div className="text-4xl font-mono font-bold text-gray-800 dark:text-white">{formatTime(elapsed)}</div>
-              <div className="text-sm text-gray-500 dark:text-gray-400 mt-1">elapsed</div>
+              <div className="text-sm text-gray-500 dark:text-gray-400 mt-1">{t('timer.elapsed')}</div>
               <div className="text-lg font-semibold text-green-600 dark:text-green-400 mt-2">{formatTime(remaining)}</div>
-              <div className="text-xs text-gray-400 mt-0.5">remaining</div>
+              <div className="text-xs text-gray-400 mt-0.5">{t('timer.remaining')}</div>
               <div className="text-sm font-medium text-gray-600 dark:text-gray-300 mt-2">{Math.round(progress * 100)}%</div>
             </>
           ) : (
             <>
               <div className="text-5xl mb-2">⏱️</div>
-              <div className="text-sm text-gray-500 dark:text-gray-400">Goal: {fastGoalHours}h fast</div>
-              {elapsed > 0 && <div className="text-xs text-gray-400 mt-1">paused at {formatTime(elapsed)}</div>}
+              <div className="text-sm text-gray-500 dark:text-gray-400">{t('timer.goal', { hours: String(fastGoalHours) })}</div>
+              {elapsed > 0 && <div className="text-xs text-gray-400 mt-1">{t('timer.paused', { time: formatTime(elapsed) })}</div>}
             </>
           )}
         </div>
@@ -227,7 +241,7 @@ export default function Timer({ onSessionChange, onTick }: TimerProps) {
             onClick={handleStart}
             className="px-8 py-3 bg-green-600 hover:bg-green-700 text-white rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all active:scale-95"
           >
-            Start Fast
+            {t('timer.startFast')}
           </button>
         ) : (
           <>
@@ -235,13 +249,13 @@ export default function Timer({ onSessionChange, onTick }: TimerProps) {
               onClick={handleStop}
               className="px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-2xl font-semibold shadow-lg transition-all active:scale-95"
             >
-              Complete Fast
+              {t('timer.completeFast')}
             </button>
             <button
               onClick={handleReset}
               className="px-4 py-3 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-2xl font-semibold transition-all active:scale-95"
             >
-              Reset
+              {t('timer.reset')}
             </button>
           </>
         )}
@@ -251,8 +265,8 @@ export default function Timer({ onSessionChange, onTick }: TimerProps) {
       {progress >= 1 && isActive && (
         <div className="text-center p-4 bg-green-50 dark:bg-green-900/30 rounded-2xl border border-green-200 dark:border-green-800">
           <div className="text-2xl mb-1">🎉</div>
-          <div className="font-semibold text-green-700 dark:text-green-400">Fast goal reached!</div>
-          <div className="text-sm text-green-600 dark:text-green-500">Keep going or complete your fast</div>
+          <div className="font-semibold text-green-700 dark:text-green-400">{t('timer.goalReached')}</div>
+          <div className="text-sm text-green-600 dark:text-green-500">{t('timer.goalReachedSub')}</div>
         </div>
       )}
     </div>
