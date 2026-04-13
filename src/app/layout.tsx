@@ -97,6 +97,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <meta name="naver-site-verification" content="7c55f35ed105f45c7be7bde6e0256be8729ce9f2" />
         <meta name="google-adsense-account" content="ca-pub-7098271335538021" />
         <DarkModeScript />
         <link rel="manifest" href="/manifest.json" />
