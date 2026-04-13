@@ -97,6 +97,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <meta name="google-adsense-account" content="ca-pub-7098271335538021" />
         <DarkModeScript />
         <link rel="manifest" href="/manifest.json" />
         <meta name="google-site-verification" content="WddgcbVJsL2BGHNAje5m6DK56IcR0Mw5UOqozI2Xtrc" />
