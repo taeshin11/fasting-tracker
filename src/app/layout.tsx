@@ -70,7 +70,18 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "/",
+    canonical: BASE_URL,
+    languages: {
+      "en": `${BASE_URL}/?lang=en`,
+      "ko": `${BASE_URL}/?lang=ko`,
+      "ja": `${BASE_URL}/?lang=ja`,
+      "zh": `${BASE_URL}/?lang=zh`,
+      "es": `${BASE_URL}/?lang=es`,
+      "fr": `${BASE_URL}/?lang=fr`,
+      "de": `${BASE_URL}/?lang=de`,
+      "pt": `${BASE_URL}/?lang=pt`,
+      "x-default": BASE_URL,
+    },
   },
 };
 
@@ -88,13 +99,20 @@ export default function RootLayout({
       <head>
         <DarkModeScript />
         <link rel="manifest" href="/manifest.json" />
-        <meta name="google-site-verification" content="ppGiOr8iUeptLM9o1aMjOvKyWKn1SfW3jn56FP7NoIc" />
+        <meta name="google-site-verification" content="WddgcbVJsL2BGHNAje5m6DK56IcR0Mw5UOqozI2Xtrc" />
         <meta name="theme-color" content="#5a8a5e" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Fasting Tracker" />
         <link rel="alternate" hrefLang="x-default" href="https://fasting-tracker-dusky.vercel.app" />
-        <link rel="alternate" hrefLang="en" href="https://fasting-tracker-dusky.vercel.app" />
+        <link rel="alternate" hrefLang="en" href="https://fasting-tracker-dusky.vercel.app/?lang=en" />
+        <link rel="alternate" hrefLang="ko" href="https://fasting-tracker-dusky.vercel.app/?lang=ko" />
+        <link rel="alternate" hrefLang="ja" href="https://fasting-tracker-dusky.vercel.app/?lang=ja" />
+        <link rel="alternate" hrefLang="zh" href="https://fasting-tracker-dusky.vercel.app/?lang=zh" />
+        <link rel="alternate" hrefLang="es" href="https://fasting-tracker-dusky.vercel.app/?lang=es" />
+        <link rel="alternate" hrefLang="fr" href="https://fasting-tracker-dusky.vercel.app/?lang=fr" />
+        <link rel="alternate" hrefLang="de" href="https://fasting-tracker-dusky.vercel.app/?lang=de" />
+        <link rel="alternate" hrefLang="pt" href="https://fasting-tracker-dusky.vercel.app/?lang=pt" />
         <Script
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7098271335538021"
           strategy="afterInteractive"

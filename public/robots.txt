@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /_next/
+Disallow: /api/
+
+Sitemap: https://fasting-tracker-dusky.vercel.app/sitemap.xml
+
+# Fasting Tracker - Free Intermittent Fasting Timer
+# https://fasting-tracker-dusky.vercel.app

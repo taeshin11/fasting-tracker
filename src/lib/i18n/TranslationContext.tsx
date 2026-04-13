@@ -22,6 +22,14 @@ function getNestedValue(obj: Record<string, unknown>, path: string): string {
 function detectLocale(): Locale {
   if (typeof window === 'undefined') return 'en';
 
+  // Check ?lang=xx URL param first
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlLang = urlParams.get('lang');
+  if (urlLang && SUPPORTED_LOCALES.includes(urlLang as Locale)) {
+    localStorage.setItem(STORAGE_KEY, urlLang);
+    return urlLang as Locale;
+  }
+
   const stored = localStorage.getItem(STORAGE_KEY);
   if (stored && SUPPORTED_LOCALES.includes(stored as Locale)) {
     return stored as Locale;
